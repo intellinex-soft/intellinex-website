@@ -1,0 +1,14 @@
+import { IResponseHelper } from "./ResponseHelper";
+
+export interface Service {
+  id: number;
+  title: string;
+  description: string;
+  icon: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IService extends IResponseHelper {
+  data: [Service];
+}
