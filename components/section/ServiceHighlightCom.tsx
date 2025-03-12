@@ -11,7 +11,7 @@ import { Service } from '@/types/Service';
 export default function ServiceHighlightCom({ data }: { data: Service[] }) {
     return (
         <div className='container mx-auto'>
-            <h2 className="text-3xl font-bold mb-5">
+            <h2 className="text-3xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-400 dark:from-neutral-200 to-neutral-600 font-bold mb-5">
                 Our Services
             </h2>
             <div className="mt-20 mb-10">
@@ -37,7 +37,9 @@ export default function ServiceHighlightCom({ data }: { data: Service[] }) {
                             <ServiceCard data={service} />
                         </SwiperSlide>
                     ))}
-                    <SwiperButton />
+                    {data.length > 4 && (
+                        <SwiperButton />
+                    )}
                 </Swiper>
             </div>
         </div>

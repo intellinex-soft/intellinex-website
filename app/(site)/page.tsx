@@ -1,17 +1,26 @@
 import { Hero } from "@/components/section/Hero";
 import ServiceHighlightCom from "@/components/section/ServiceHighlightCom";
-import Api from "@/lib/api";
-import { IService } from "@/types/Service";
+import { createClient } from "@/utils/supabase/server";
+
 
 export default async function Home() {
 
-  const response: IService = await Api.POST('service/get_services')
-  console.log(response.data)
+  const supabase = await createClient();
+
+  const { data: services, error } = await supabase
+    .from('fa_services')
+    .select('*')
+    .eq('status', true)
+
+  if (error) {
+    console.log(error)
+    return
+  }
 
   return (
     <div>
       <Hero />
-      <ServiceHighlightCom data={response.data} />
+      <ServiceHighlightCom data={services} />
     </div>
   );
 }

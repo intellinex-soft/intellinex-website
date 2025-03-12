@@ -5,6 +5,7 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
+  status: string;
   created_at: string;
   updated_at: string;
 }

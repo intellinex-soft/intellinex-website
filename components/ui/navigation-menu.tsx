@@ -130,7 +130,6 @@ function NavigationMenuLink({
   const pathname = usePathname();
   const part = pathname.split('/');
   const isActive = part[1] === props.href?.slice(1)
-  console.log(props)
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"

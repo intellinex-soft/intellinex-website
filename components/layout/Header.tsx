@@ -49,7 +49,7 @@ export default function Header() {
         };
     }, []);
     return (
-        <header className={`py-3 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-linear ${scrolled ? ' bg-white/80 dark:bg-black backdrop-blur-md border-b border-gray-100 dark:border-slate-900' : ''}`}>
+        <header className={`py-3 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-linear ${scrolled ? ' bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-900' : ''}`}>
             <div className='container mx-auto flex items-center justify-between'>
                 <div className='flex items-center'>
                     <Link href="/" className='me-10' >
@@ -81,21 +81,21 @@ export default function Header() {
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Link href="/products" legacyBehavior passHref>
+                                <Link href="/product" legacyBehavior passHref>
                                     <NavigationMenuLink className='nav-link' >
                                         Products
                                     </NavigationMenuLink>
                                 </Link>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Link href="/clients" legacyBehavior passHref>
+                                <Link href="/client" legacyBehavior passHref>
                                     <NavigationMenuLink className='nav-link' >
                                         Clients
                                     </NavigationMenuLink>
                                 </Link>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <Link href="/blogs" legacyBehavior passHref>
+                                <Link href="/blog" legacyBehavior passHref>
                                     <NavigationMenuLink className='nav-link' >
                                         Blogs
                                     </NavigationMenuLink>

@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import React from 'react'
 import { useSwiper } from 'swiper/react'
 
-export default function SwiperButton() {
+const SwiperButton = () => {
     const swiper = useSwiper()
     return (
         <div className='mt-10 flex self-end flex-row items-center gap-3 absolute right-0 bottom-0 z-10' >
@@ -15,3 +15,5 @@ export default function SwiperButton() {
         </div>
     )
 }
+
+export default React.memo(SwiperButton);
