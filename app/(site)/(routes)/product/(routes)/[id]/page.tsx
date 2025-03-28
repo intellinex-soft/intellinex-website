@@ -5,13 +5,13 @@ import { Metadata } from 'next';
 import React from 'react'
 
 interface Props {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({
     params,
 }: Props): Promise<Metadata> {
-    const { id } = await Promise.resolve(params)
+    const { id } = await params
     const supabase = await createClient();
     const { data: product } = await supabase
         .from('fa_products')
@@ -41,7 +41,7 @@ export async function generateMetadata({
 
 
 export default async function Page({ params }: Props) {
-    const { id } = await Promise.resolve(params)
+    const { id } = await params;
 
     if (process.env.NODE_ENV === 'development') {
         await new Promise(resolve => setTimeout(resolve, 1000));
