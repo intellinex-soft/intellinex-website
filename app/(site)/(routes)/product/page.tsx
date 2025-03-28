@@ -1,4 +1,4 @@
-import ProductComponent from '@/components/page/ProductComponent'
+import ProductComponent from '@/components/page/product-component'
 import { createClient } from '@/utils/supabase/server'
 import { Metadata } from 'next'
 import React from 'react'

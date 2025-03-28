@@ -1,0 +1,98 @@
+import { IProduct } from '@/types/Products'
+import Image from 'next/image'
+import React from 'react'
+import { Cover } from '../ui/cover'
+import Link from 'next/link'
+
+const LastProductCom = ({ data }: { data: IProduct }) => {
+    return (
+        <section className='mt-20 mb-20'>
+            <div className='container mx-auto'>
+                <p className='text-sm font-medium text-center text-gray-500' >Product</p>
+                <h1 className='text-3xl bg-clip-text text-center text-transparent bg-gradient-to-b from-neutral-500 dark:from-neutral-200 to-neutral-800 font-bold mb-5' >Last Product</h1>
+
+                <div className='grid grid-cols-1 md:grid-cols-2 mt-10 h-[500px]' >
+                    <div className='flex flex-col justify-center md:p-10 gap-y-2'>
+                        <Image
+                            src={data.logo!}
+                            alt={data.name}
+                            width={70}
+                            height={70}
+                            loading='lazy'
+                            className='rounded-xl'
+                        />
+                        <div className='mb-3 mt-5' >
+                            <Cover>
+                                <p className='text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-b hover:from-gray-600 hover:to-gray-400 from-gray-600 to-gray-800 dark:from-gray-500 dark:to-gray-100 '>{data.name}</p>
+                            </Cover>
+                        </div>
+                        <p className='text-base text-gray-500 dark:text-gray-300 leading-7 pe-10' >{data.description}</p>
+                        <div className='flex items-center gap-6 mt-5'>
+                            <Link href="#" className='button-inx' >
+                                Download
+                            </Link>
+                            <Link href="#" className='text-xs py-2 px-4 text-primary border border-primary rounded-full'>
+                                Learn more
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className='grid md:grid-cols-3 grid-cols-2 h-[500px] max-md:h-0 gap-5'>
+                        <div className='relative rounded-xl overflow-hidden border-4 border-white shadow-gray-200 dark:shadow-primary shadow-2xl' >
+                            <Image
+                                src={data.images[0]!}
+                                alt={data.name}
+                                fill
+                                loading='lazy'
+                                objectFit='cover'
+                                objectPosition='top'
+                            />
+                        </div>
+                        <div className='relative rounded-xl overflow-hidden border-4 border-white shadow-gray-200 dark:shadow-primary shadow-2xl' >
+                            <Image
+                                src={data.images[1]!}
+                                alt={data.name}
+                                fill
+                                loading='lazy'
+                                objectFit='cover'
+                                objectPosition='top'
+                            />
+                        </div>
+                        <div className='relative rounded-xl overflow-hidden border-4 border-white shadow-gray-200 dark:shadow-primary shadow-2xl' >
+                            <Image
+                                src={data.images[2]!}
+                                alt={data.name}
+                                fill
+                                loading='lazy'
+                                objectFit='cover'
+                                objectPosition='top'
+                            />
+                        </div>
+                        <div className='relative rounded-xl overflow-hidden border-4 border-white shadow-gray-200 dark:shadow-primary shadow-2xl' >
+                            <Image
+                                src={data.images[4]!}
+                                alt={data.name}
+                                fill
+                                loading='lazy'
+                                objectFit='cover'
+                                objectPosition='top'
+                            />
+                        </div>
+                        <div className='relative rounded-xl overflow-hidden border-4 border-white shadow-gray-200 dark:shadow-primary shadow-2xl' >
+                            <Image
+                                src={data.images[3]!}
+                                alt={data.name}
+                                fill
+                                loading='lazy'
+                                objectFit='cover'
+                                objectPosition='top'
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default LastProductCom

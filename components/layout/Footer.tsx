@@ -42,7 +42,7 @@ export default async function Footer({ data }: IService) {
                     <ul className='mt-2' >
                         {data.map((service, idx) => (
                             <li key={idx} className='mb-2'>
-                                <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                                <Link className='text-sm text-gray-700 dark:text-gray-300' href={`${service.id}`}>
                                     {service.title}
                                 </Link>
                             </li>
@@ -53,27 +53,27 @@ export default async function Footer({ data }: IService) {
                     <span className='text-xs text-gray-400'>Company</span>
                     <ul className='mt-2'>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/about-us">
                                 About
                             </Link>
                         </li>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/archivement">
                                 Archivement
                             </Link>
                         </li>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
-                                Expore
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/explore">
+                                Explore
                             </Link>
                         </li>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/blog">
                                 Blog
                             </Link>
                         </li>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/contact-us">
                                 Contact
                             </Link>
                         </li>
@@ -83,17 +83,17 @@ export default async function Footer({ data }: IService) {
                     <span className='text-xs text-gray-400'>Legal</span>
                     <ul className='mt-2'>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/terms-and-conditions">
                                 Terms and Conditions
                             </Link>
                         </li>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/privacy-policy">
                                 Privacy Policy
                             </Link>
                         </li>
                         <li className='mb-2' >
-                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/product/detail?id=394ry4yr84t8">
+                            <Link className='text-sm text-gray-700 dark:text-gray-300' href="/cookies-management">
                                 Cookies Management
                             </Link>
                         </li>

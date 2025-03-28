@@ -5,7 +5,7 @@ import { PropsWithChildren, Suspense } from "react";
 export const metadata: Metadata = {
     title: {
         default: "Home",
-        template: "%s - IntelliNex"
+        template: "%s - Intellinex Soft"
     },
     description: " what we have."
 }
