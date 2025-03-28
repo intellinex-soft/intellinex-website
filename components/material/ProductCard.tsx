@@ -33,7 +33,7 @@ const ProductCard = ({ item }: { item: IProduct }) => {
                             <span className='text-sm font-medium'>Visit</span>
                         </Link>
                     )}
-                    <Link href={`/product/detail?id=${item.id}`} className='button-inx w-30 flex justify-center items-center'>
+                    <Link href={`/product/${item.id}`} className='button-inx w-30 flex justify-center items-center'>
                         <span className='text-sm font-medium'>Detail</span>
                     </Link>
                 </div>

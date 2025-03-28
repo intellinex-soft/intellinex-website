@@ -4,9 +4,9 @@ import { Metadata } from 'next'
 import React from 'react'
 
 export async function generateMetadata({
-    searchParams
-}: { searchParams: { id: string } }): Promise<Metadata> {
-    const { id } = await searchParams
+    params
+}: { params: { id: string } }): Promise<Metadata> {
+    const { id } = await Promise.resolve(params)
     const supabase = await createClient();
     const { data: blog } = await supabase
         .from('fa_blogs')
@@ -34,8 +34,8 @@ export async function generateMetadata({
     };
 }
 
-export default async function Payge({ searchParams }: { searchParams: { id: string } }) {
-    const { id } = await searchParams
+export default async function Payge({ params }: { params: { id: string } }) {
+    const { id } = await Promise.resolve(params)
     const supabase = await createClient();
     const { data: blog } = await supabase
         .from('fa_blogs')

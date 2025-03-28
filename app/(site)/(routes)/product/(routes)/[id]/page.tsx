@@ -4,16 +4,14 @@ import { createClient } from '@/utils/supabase/server'
 import { Metadata } from 'next';
 import React from 'react'
 
-interface IProductDetailProps {
-    searchParams: {
-        id: string
-    }
+interface Props {
+    params: { id: string };
 }
 
 export async function generateMetadata({
-    searchParams
-}: IProductDetailProps): Promise<Metadata> {
-    const { id } = await searchParams
+    params,
+}: Props): Promise<Metadata> {
+    const { id } = await Promise.resolve(params)
     const supabase = await createClient();
     const { data: product } = await supabase
         .from('fa_products')
@@ -42,11 +40,12 @@ export async function generateMetadata({
 }
 
 
-export default async function Page({ searchParams }: IProductDetailProps) {
+export default async function Page({ params }: Props) {
+    const { id } = await Promise.resolve(params)
 
-    const { id } = await searchParams
-
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    if (process.env.NODE_ENV === 'development') {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+    }
 
     const supabase = await createClient();
     const { data: product, error } = await supabase

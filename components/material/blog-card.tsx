@@ -6,7 +6,7 @@ import { Blog } from '@/types/blog'
 
 const BlogCardCom = ({ data }: { data: Blog }) => {
     return (
-        <Link href={`/blog-detail?id=${data.id}`} >
+        <Link href={`/blog-detail/${data.id}`} >
             <div className='rounded-2xl overflow-hidden bg-primary/5'>
                 <div className='relative w-full h-[170px]' >
                     <Image
