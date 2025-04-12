@@ -7,6 +7,7 @@ export interface Service {
   icon: string;
   status: string;
   created_at: string;
+  href: string;
   updated_at: string;
 }
 

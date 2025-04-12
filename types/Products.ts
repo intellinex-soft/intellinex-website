@@ -2,6 +2,7 @@ export interface IProduct {
   id: string;
   name: string;
   description?: string;
+  thumbnail?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   images?: any;
   status: boolean;

@@ -5,34 +5,30 @@ import React, { useEffect, useState } from 'react'
 import ThemeToggle from '../ui/theme-toggle'
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '../ui/navigation-menu'
 import { cn } from '@/lib/utils'
+import { createClient } from '@/utils/supabase/client'
+import { Service } from '@/types/Service'
 
 export default function Header() {
-    const [scrolled, setScrolled] = useState(false);
-    const components: { title: string; href: string; description: string }[] = [
-        {
-            title: "Software Development",
-            href: "/docs/primitives/alert-dialog",
-            description:
-                "A modal dialog that interrupts the user with important content and expects a response.",
-        },
-        {
-            title: "Hover Card",
-            href: "/docs/primitives/hover-card",
-            description:
-                "For sighted users to preview content available behind a link.",
-        },
-        {
-            title: "Progress",
-            href: "/docs/primitives/progress",
-            description:
-                "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-        },
-        {
-            title: "Scroll-area",
-            href: "/docs/primitives/scroll-area",
-            description: "Visually or semantically separates content.",
+    const supabase = createClient();
+    const [services, setServices] = useState<Service[]>([])
+    const getServices = async () => {
+        const { data } = await supabase
+            .from("fa_services")
+            .select("*")
+            .eq("status", true);
+
+        if (data) {
+            setServices(data)
         }
-    ];
+    }
+
+    useEffect(() => {
+        getServices()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const [scrolled, setScrolled] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 50) {
@@ -68,15 +64,18 @@ export default function Header() {
                                 <NavigationMenuTrigger className='nav-link' >Service</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                                        {components.map((component) => (
+                                        {services.map((service: Service) => (
                                             <ListItem
-                                                key={component.title}
-                                                title={component.title}
-                                                href={component.href}
+                                                key={service.title}
+                                                title={service.title}
+                                                href={service.href}
                                             >
-                                                {component.description}
+                                                {service.description}
                                             </ListItem>
                                         ))}
+                                        <ListItem title='View All' href='/services'>
+                                            See all of our services
+                                        </ListItem>
                                     </ul>
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
@@ -91,6 +90,13 @@ export default function Header() {
                                 <Link href="/client" legacyBehavior passHref>
                                     <NavigationMenuLink className='nav-link' >
                                         Clients
+                                    </NavigationMenuLink>
+                                </Link>
+                            </NavigationMenuItem>
+                            <NavigationMenuItem>
+                                <Link href="/partner" legacyBehavior passHref>
+                                    <NavigationMenuLink className='nav-link' >
+                                        Partners
                                     </NavigationMenuLink>
                                 </Link>
                             </NavigationMenuItem>
