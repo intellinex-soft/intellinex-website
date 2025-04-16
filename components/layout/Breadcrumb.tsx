@@ -10,11 +10,13 @@ const Breadcrumb = () => {
     const pathname = usePathname();
     const path = pathname.split("/")
 
+    const title = path[1].split("-").join(" ")
+
     return (
         <section className='py-10 h-[24rem]'>
             <div className='container mx-auto h-[24rem] flex flex-col justify-center items-center'>
                 <h1 className='text-4xl bg-gradient-to-b bg-clip-text text-transparent from-neutral-600 dark:from-primary/80 to-neutral-900 dark:to-primary font-bold capitalize'>
-                    {path[1]}
+                    {title}
                 </h1>
                 <div className='flex flex-row items-center gap-x-3 mt-3' >
                     <Link href="/" replace>

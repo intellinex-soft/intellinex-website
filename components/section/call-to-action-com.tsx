@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import Link from 'next/link'
 
 const CallToActionComponent = () => {
     return (
@@ -11,9 +12,11 @@ const CallToActionComponent = () => {
                     the software builder for creative pros.
                 </p>
                 <div className='mt-6' >
-                    <Button className='text-primary rounded-full text-xs bg-white hover:bg-slate-200 transition-all duration-150 ease-in-out cursor-pointer' >
-                        Get started
-                    </Button>
+                    <Link href="/contact-us">
+                        <Button className='text-primary rounded-full text-xs bg-white hover:bg-slate-200 transition-all duration-150 ease-in-out cursor-pointer' >
+                            Get started
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </section>

@@ -9,6 +9,8 @@ export interface Service {
   created_at: string;
   href: string;
   updated_at: string;
+  thumbnail: string;
+  headeline: string;
 }
 
 export interface IService extends IResponseHelper {

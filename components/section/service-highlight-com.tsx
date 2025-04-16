@@ -8,9 +8,15 @@ import "swiper/css/pagination";
 import ServiceCard from '../material/ServiceCard';
 import SwiperButton from '../ui/swipe-button';
 import { Service } from '@/types/Service';
+import AOS from "aos";
+import 'aos/dist/aos.css';
 export default function ServiceHighlightCom({ data }: { data: Service[] }) {
+    React.useEffect(() => {
+        AOS.init({})
+    }, [])
     return (
         <div className='container mx-auto'>
+            <p className='text-sm font-medium text-center text-gray-500' >Services</p>
             <h2 className="text-3xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-400 dark:from-neutral-200 to-neutral-600 font-bold mb-5">
                 Our Services
             </h2>
@@ -32,9 +38,9 @@ export default function ServiceHighlightCom({ data }: { data: Service[] }) {
                     speed={700}
                     className='relative'
                 >
-                    {data.map((service) => (
+                    {data.map((service, indx) => (
                         <SwiperSlide key={service.id} className='mb-20' >
-                            <ServiceCard data={service} />
+                            <ServiceCard indx={indx} data={service} />
                         </SwiperSlide>
                     ))}
                     {data.length > 4 && (

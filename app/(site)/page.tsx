@@ -15,6 +15,7 @@ export default async function Home() {
     .from('fa_services')
     .select('*')
     .eq('status', true)
+    .order("id", { ascending: true })
 
   if (error) {
     console.log(error)

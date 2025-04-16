@@ -1,11 +1,23 @@
+"use client"
 import { IProduct } from '@/types/Products'
 import Image from 'next/image'
 import React from 'react'
+import { Button } from '../ui/button'
+import { ChevronLeft, Download } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const ProductDetailComponent = ({ data }: { data: IProduct }) => {
+    const router = useRouter()
     return (
-        <div className='' >
-            <div className='container mx-auto'>
+        <div className=''>
+            <div className='container mx-auto my-20'>
+                <div className='max-w-[800px] mx-auto mb-10'>
+                    <Button variant='link' className='cursor-pointer' onClick={() => router.back()}>
+                        <ChevronLeft />
+                        <span>Back</span>
+                    </Button>
+                </div>
                 <div className='flex flex-col items-center' >
                     <Image
                         src={data.logo!}
@@ -18,6 +30,14 @@ const ProductDetailComponent = ({ data }: { data: IProduct }) => {
                     <p className='mt-3 text-2xl font-bold bg-clip-text bg-gradient-to-b text-transparent dark:from-slate-500 dark:to-slate-50 from-slate-500 to-slate-800'>
                         {data.name}
                     </p>
+                    <div className='mt-3'>
+                        <Link href="/download">
+                            <button className='button-inx flex items-center gap-x-2'>
+                                <Download size={14} />
+                                Download
+                            </button>
+                        </Link>
+                    </div>
                     <div className='mt-10' >
                         <p className='text-center text-gray-400 max-w-[800px] px-5'>{data.description}</p>
                     </div>
