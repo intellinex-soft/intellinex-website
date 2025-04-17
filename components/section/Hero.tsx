@@ -1,9 +1,13 @@
 "use client";
 import React from "react";
-import { BackgroundBeams } from "../ui/background-beams";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
-export function Hero() {
+const BackgroundBeams = dynamic(() => import("../ui/background-beams"), {
+    ssr: false,
+})
+
+export default function Hero() {
     const trusted = [
         "/assets/logo1.svg",
         "/assets/logo2.svg",

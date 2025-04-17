@@ -1,6 +1,11 @@
 import ServiceComponent from '@/components/page/service-component'
 import { createClient } from '@/utils/supabase/server'
+import { Metadata } from 'next';
 import React from 'react'
+
+export const metadata: Metadata = {
+    title: "Service"
+}
 
 export default async function Page() {
 

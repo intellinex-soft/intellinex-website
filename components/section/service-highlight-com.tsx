@@ -5,11 +5,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import ServiceCard from '../material/ServiceCard';
 import SwiperButton from '../ui/swipe-button';
 import { Service } from '@/types/Service';
 import AOS from "aos";
 import 'aos/dist/aos.css';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '../ui/skeleton';
+
+const ServiceCard = dynamic(() => import("../material/ServiceCard"), {
+    ssr: false,
+    loading: () => <Skeleton className='p-6' />
+})
+
 export default function ServiceHighlightCom({ data }: { data: Service[] }) {
     React.useEffect(() => {
         AOS.init({})

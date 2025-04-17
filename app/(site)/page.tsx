@@ -1,11 +1,15 @@
 import CallToActionComponent from "@/components/section/call-to-action-com";
-import { Hero } from "@/components/section/Hero";
-import LastProductCom from "@/components/section/last-products-com";
+import Hero from "@/components/section/Hero";
+// import LastProductCom from "@/components/section/last-products-com";
 import OurClientComponent from "@/components/section/our-client-com";
 import PartnershipSection from "@/components/section/partnership-com";
 import ServiceHighlightCom from "@/components/section/service-highlight-com";
 import { createClient } from "@/utils/supabase/server";
+import dynamic from "next/dynamic";
 
+const LastProductCom = dynamic(() => import("@/components/section/last-products-com"), {
+  loading: () => <p>Loading..</p>,
+})
 
 export default async function Home() {
 

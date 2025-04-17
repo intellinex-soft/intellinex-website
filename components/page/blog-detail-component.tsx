@@ -24,6 +24,8 @@ function BlogDetailComponent({ data }: { data: Blog }) {
                                         height={20}
                                         loading='lazy'
                                         className='rounded'
+                                        blurDataURL='data:...'
+                                        placeholder='blur'
                                     />
                                     <p className='text-sm font-medium uppercase text-gray-700'>{data.author?.name}</p>
                                 </div>

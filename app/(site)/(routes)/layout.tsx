@@ -1,7 +1,7 @@
-import Breadcrumb from "@/components/layout/Breadcrumb";
 import { Metadata } from "next";
 import { PropsWithChildren, Suspense } from "react";
 import Loading from "./loading";
+import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
     title: {
@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     },
     description: " what we have."
 }
+
+const Breadcrumb = dynamic(() => import('@/components/layout/Breadcrumb'), {})
 
 export default function SiteLayout({ children }: PropsWithChildren) {
     return (

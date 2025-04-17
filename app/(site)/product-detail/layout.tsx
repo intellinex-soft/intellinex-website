@@ -5,8 +5,8 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: {
-        default: "Intellinex Soft",
-        template: "%s - Intellinex Soft"
+        default: "Intellinex",
+        template: "%s - Intellinex"
     },
     description: "Detail blog, what we have done?"
 }

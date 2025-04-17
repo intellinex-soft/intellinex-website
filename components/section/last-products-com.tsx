@@ -20,7 +20,7 @@ const LastProductCom = ({ data }: { data: IProduct }) => {
 
                 <div className='grid grid-cols-1 md:grid-cols-2 mt-10 h-[500px]'>
 
-                    <div className='flex flex-col justify-center md:p-10 gap-y-2' data-aos="fade-right">
+                    <div suppressHydrationWarning className='flex flex-col justify-center md:p-10 gap-y-2' data-aos="fade-right">
                         <Image
                             src={data.logo!}
                             alt={data.name}
@@ -46,7 +46,7 @@ const LastProductCom = ({ data }: { data: IProduct }) => {
                     </div>
 
 
-                    <div className='' data-aos="fade-left">
+                    <div suppressHydrationWarning data-aos="fade-left">
                         <div className='relative h-full w-full' >
                             <Image
                                 src={data.thumbnail!}

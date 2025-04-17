@@ -1,19 +1,29 @@
+"use client"
 import { Eye } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Blog } from '@/types/blog'
+import AOS from "aos"
+import 'aos/dist/aos.css';
 
-const BlogCardCom = ({ data }: { data: Blog }) => {
+const BlogCardCom = ({ data, idx }: { data: Blog, idx: number }) => {
+
+    React.useEffect(() => {
+        AOS.init();
+    }, [])
+
     return (
         <Link href={`/blog-detail/${data.id}`} >
-            <div className='rounded-2xl overflow-hidden bg-primary/5'>
+            <div className='rounded-2xl overflow-hidden bg-primary/5' data-aos="fade-up" data-aos-duration={`${idx}50`}>
                 <div className='relative w-full h-[170px]' >
                     <Image
                         src={data.thumbnail}
                         alt={data.title}
                         fill
                         loading='lazy'
+                        blurDataURL='data:...'
+                        placeholder='blur'
                     />
                 </div>
                 <div className='pt-2 pb-4 px-3'>

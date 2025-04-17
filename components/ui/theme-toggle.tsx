@@ -17,7 +17,7 @@ export default function ThemeToggle() {
     }, []);
 
     return mount && (
-        <Button size='icon' className='rounded-full w-8 h-8 bg-gradient-to-b from-primary/80 to-primary border shadow border-primary' onClick={toggleTheme}>
+        <Button size='icon' className='rounded-full cursor-pointer w-8 h-8 bg-gradient-to-b from-primary/80 to-primary border shadow border-primary' onClick={toggleTheme}>
             {theme === 'light' && <Moon size={15} />}
             {theme === 'dark' && <Sun color='#F9F9F9' />}
         </Button>

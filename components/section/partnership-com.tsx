@@ -6,7 +6,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { A11y, Autoplay, Navigation, Pagination } from 'swiper/modules';
-import PartnerCard from '../material/partner-card';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '../ui/skeleton';
+
+const PartnerCard = dynamic(() => import("../material/partner-card"), {
+    ssr: false,
+    loading: () => <Skeleton className='p-5' />
+})
 
 const PartnershipSection = ({ data }: { data: Partner[] }) => {
     return (
