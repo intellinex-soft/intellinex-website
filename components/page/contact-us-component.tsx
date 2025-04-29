@@ -54,9 +54,14 @@ const ContactUsComponent = () => {
             const parsed = JSON.parse(jsonString)
 
             let phoneFormatted: string | null = ""
-            if (parsed.phone?.startWith("0")) {
-                phoneFormatted = `${parsed.phonecode}${parsed.phone.slice(1)}`
+
+            const phoneCode = parsed.phonecode.split("|")
+
+            if (parsed.phone.startsWith("0")) {
+                phoneFormatted = `${phoneCode[0]}${parsed.phone.slice(1)}`
             }
+
+            phoneFormatted = `${phoneCode[0]}${parsed.phone}`
 
             customer = {
                 firstname: parsed.firstname || '',
@@ -105,7 +110,7 @@ const ContactUsComponent = () => {
                         <div className='flex flex-col gap-y-2 mt-5'>
                             <Label className='text-gray-600'>Phone</Label>
                             <div className='flex items-center'>
-                                <Select name='phonecode'>
+                                <Select name='phonecode' required>
                                     <SelectTrigger className="border-r-0 rounded-r-none">
                                         <SelectValue placeholder="KH" />
                                     </SelectTrigger>
@@ -121,7 +126,7 @@ const ContactUsComponent = () => {
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
-                                <Input name='phone' type='number' className='border-l-0 rounded-l-none' defaultValue={customer.phone || ""} placeholder='Phone' />
+                                <Input name='phone' type='number' className='border-l-0 rounded-l-none' defaultValue={customer.phone || ""} placeholder='Phone' required />
                             </div>
                         </div>
 
@@ -139,13 +144,14 @@ const ContactUsComponent = () => {
                         </div>
 
 
-                        <Button type='submit' className='w-full mt-5' >
+                        <Button type='submit' className='w-full mt-5 text-white' >
                             Send Message
                         </Button>
                     </form>
                 </div>
                 <div>
                     <p className='text-lg font-medium'>Chat with us</p>
+
                 </div>
             </div>
         </div>

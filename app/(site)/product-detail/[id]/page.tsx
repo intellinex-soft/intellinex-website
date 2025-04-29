@@ -3,6 +3,17 @@ import { createClient } from '@/utils/supabase/server';
 import { Metadata } from 'next';
 import React from 'react'
 
+export async function generateStaticParans() {
+    const supabase = await createClient();
+    const { data: products } = await supabase
+        .from('fa_products')
+        .select('id')
+        .eq('status', true)
+        .order('created_at', { ascending: false })
+    const allIds = products && products?.map((product) => product?.id)
+    return allIds?.map((id) => ({ id }))
+}
+
 export async function generateMetadata({
     params
 }: { params: Promise<{ id: string }> }): Promise<Metadata> {

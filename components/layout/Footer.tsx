@@ -11,7 +11,7 @@ export default async function Footer({ data }: IService) {
 
     return (
         <footer className='bg-white dark:bg-primary/5 py-10'>
-            <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-y-10 lg:grid-cols-6'>
+            <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-y-10 lg:grid-cols-6 px-6 lg:px-0'>
                 <div className='flex items-center gap-x-2 col-span-2 self-start'>
                     <div className='relative flex items-center gap-x-2' >
                         <Logo size={24} />

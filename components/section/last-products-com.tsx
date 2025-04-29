@@ -16,7 +16,7 @@ const LastProductCom = ({ data }: { data: IProduct }) => {
             <div className='container mx-auto'>
 
                 <p className='text-sm font-medium text-center text-gray-500' >Product</p>
-                <h1 className='text-3xl bg-clip-text text-center text-transparent bg-gradient-to-b from-neutral-500 dark:from-neutral-200 to-neutral-800 font-bold mb-5' >Latest Product</h1>
+                <p className='text-3xl bg-clip-text text-center text-transparent bg-gradient-to-b from-neutral-500 dark:from-neutral-200 to-neutral-800 font-bold mb-5' >Latest Product</p>
 
                 <div className='grid grid-cols-1 md:grid-cols-2 mt-10 h-[500px]'>
 

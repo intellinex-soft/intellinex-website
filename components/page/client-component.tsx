@@ -1,24 +1,9 @@
 "use client"
-import { IProduct } from '@/types/Products'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import React from 'react'
-// import ProductCard from '../material/ProductCard'
-import AOS from "aos";
-import 'aos/dist/aos.css';
-import dynamic from 'next/dynamic';
-import { Skeleton } from '../ui/skeleton';
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
 
-const ProductCard = dynamic(() => import("../material/ProductCard"), {
-    ssr: false,
-    loading: () => <Skeleton className='p-10 h-80' />
-})
-
-const ProductComponent = ({ data }: { data: IProduct[] }) => {
-
-    React.useEffect(() => {
-        AOS.init()
-    }, []);
+const ClientComponent = () => {
 
     const dFilter = [
         {
@@ -26,21 +11,21 @@ const ProductComponent = ({ data }: { data: IProduct[] }) => {
             value: "all"
         },
         {
-            label: "Mobile App",
-            value: "mobile-app"
+            label: "On-Going",
+            value: "on-going"
         },
         {
-            label: "Website",
-            value: "website"
+            label: "One-time",
+            value: "one-time"
         }
     ]
 
     const searchParams = useSearchParams()
     const category = searchParams.get("category")
 
+
     return (
         <div className='mb-10'>
-
             <div className='container mx-auto flex justify-center items-center space-x-5 mb-10'>
                 {dFilter.map((item, idx) => (
                     <Link key={idx} href={`?category=${item.value}`} >
@@ -54,14 +39,8 @@ const ProductComponent = ({ data }: { data: IProduct[] }) => {
                     </Link>
                 ))}
             </div>
-
-            <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
-                {data.map((item, idx) => (
-                    <ProductCard indx={idx} key={idx} item={item} />
-                ))}
-            </div>
         </div>
     )
 }
 
-export default ProductComponent
+export default ClientComponent

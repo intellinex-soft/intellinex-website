@@ -31,7 +31,18 @@ export async function generateMetadata({
                 },
             ],
         },
+        keywords: blog.title
     };
+}
+
+export async function generateStaticParans() {
+    const supabase = await createClient();
+    const { data: blogs } = await supabase
+        .from('fa_blogs')
+        .select('id')
+        .eq("status", true);
+    const allIds = blogs && blogs?.map((blog) => blog?.id)
+    return allIds?.map((id) => ({ id }))
 }
 
 export default async function Payge({ params }: { params: Promise<{ id: string }> }) {

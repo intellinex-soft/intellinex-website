@@ -132,3 +132,13 @@
     @apply text-xs py-2 px-4 rounded-full bg-gradient-to-b from-primary/80 to-primary border border-primary text-white cursor-pointer
   }
 }
+
+@layer utilities {
+  .card-wrapper {
+
+  }
+
+  .card-wrapper::before {
+    
+  }
+}

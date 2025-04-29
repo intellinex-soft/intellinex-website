@@ -6,7 +6,7 @@ const CallToActionComponent = () => {
     return (
         <section className='bg-gradient-to-br from-primary to-primary/65 p-4'>
             <div className="container mx-auto flex flex-col items-center justify-center py-10">
-                <h1 className='text-lg md:text-3xl  bg-clip-text text-transparent bg-gradient-to-b from-gray-50 to-gray-400  text-center font-sans font-bold'>Ships Your Ideas to Production</h1>
+                <h2 className='text-lg md:text-3xl  bg-clip-text text-transparent bg-gradient-to-b from-gray-50 to-gray-400  text-center font-sans font-bold'>Ships Your Ideas to Production</h2>
                 <p className='text-center mt-3 text-gray-200 font-light' >
                     Go from ideas to production with <span>intellinex soft</span>, <br />
                     the software builder for creative pros.

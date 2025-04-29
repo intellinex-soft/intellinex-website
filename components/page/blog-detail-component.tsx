@@ -14,7 +14,7 @@ function BlogDetailComponent({ data }: { data: Blog }) {
                     <div className='col-span-8'>
                         <div className='flex flex-col gap-y-2' >
                             <BlogBreedcrumb />
-                            <h1 className='text-2xl font-semibold'>{data.title}</h1>
+                            <h2 className='text-2xl font-semibold'>{data.title}</h2>
                             <div className='flex items-center gap-4' >
                                 <div className='flex items-center gap-2' >
                                     <Image

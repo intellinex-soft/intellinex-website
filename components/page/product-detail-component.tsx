@@ -43,14 +43,14 @@ const ProductDetailComponent = ({ data }: { data: IProduct }) => {
                     </div>
                 </div>
                 <div className='max-w-[800px] mx-auto' >
-                    <h1 className='text-xl font-bold mt-10 text-gray-700 dark:text-gray-200'>Key Features of JobFusion</h1>
+                    <h2 className='text-xl font-bold mt-10 text-gray-700 dark:text-gray-200'>Key Features of JobFusion</h2>
                     {data?.features && data.features!.map((item: {
                         id: number;
                         text: string;
                         content: string;
                     }, idx: number) => (
                         <div key={idx} className='mt-4'>
-                            <h2 className='text-2xl font-semibold dark:text-gray-300 text-gray-600'>{item.id}. {item.text}</h2>
+                            <h3 className='text-2xl font-semibold dark:text-gray-300 text-gray-600'>{item.id}. {item.text}</h3>
                             <p className='text-gray-500 text-sm mt-2 leading-7' dangerouslySetInnerHTML={{ __html: item.content }} />
                         </div>
                     ))}

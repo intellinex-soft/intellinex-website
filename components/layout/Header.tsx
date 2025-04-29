@@ -7,6 +7,17 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import { cn } from '@/lib/utils'
 import { createClient } from '@/utils/supabase/client'
 import { Service } from '@/types/Service'
+import { LayoutGridIcon, SidebarCloseIcon } from 'lucide-react'
+
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from "@/components/ui/drawer"
 
 export default function Header() {
     const supabase = createClient();
@@ -46,12 +57,72 @@ export default function Header() {
     }, []);
     return (
         <header className={`py-3 fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-linear ${scrolled ? ' bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-100 dark:border-slate-900' : ''}`}>
-            <div className='container mx-auto flex items-center justify-between'>
+            <div className='container mx-auto flex items-center justify-between px-6 lg:p-0'>
                 <div className='flex items-center'>
+                    <Drawer direction='left'>
+                        <DrawerTrigger asChild>
+                            <button className='w-7 h-7 flex items-center justify-center me-3 bg-neutral-100 rounded lg:hidden cursor-pointer'>
+                                <LayoutGridIcon size={20} color='#777777' strokeWidth={1.5} />
+                            </button>
+                        </DrawerTrigger>
+                        <DrawerContent>
+                            <DrawerHeader>
+                                <DrawerTitle></DrawerTitle>
+                                <div className='flex items-center justify-between'>
+                                    <DrawerClose asChild>
+                                        <Link href="/" className='me-10' >
+                                            <Logo size={40} />
+                                        </Link>
+                                    </DrawerClose>
+                                    <DrawerClose asChild>
+                                        <button className='cursor-pointer'>
+                                            <SidebarCloseIcon color='#666666' strokeWidth={1.5} size={20} />
+                                        </button>
+                                    </DrawerClose>
+                                </div>
+                            </DrawerHeader>
+                            <div className='p-5 flex flex-col space-y-2'>
+                                <DrawerClose asChild>
+                                    <Link href="/about-us" className='nav-link'>
+                                        About Us
+                                    </Link>
+                                </DrawerClose>
+                                <DrawerClose asChild>
+                                    <Link href="/services" className='nav-link'>
+                                        Services
+                                    </Link>
+                                </DrawerClose>
+                                <DrawerClose asChild>
+                                    <Link href="/product" className='nav-link'>
+                                        Products
+                                    </Link>
+                                </DrawerClose>
+                                <DrawerClose asChild>
+                                    <Link href="/client" className='nav-link'>
+                                        Clients
+                                    </Link>
+                                </DrawerClose>
+                                <DrawerClose asChild>
+                                    <Link href="/partner" className='nav-link'>
+                                        Partners
+                                    </Link>
+                                </DrawerClose>
+                                <DrawerClose asChild>
+                                    <Link href="/blog" className='nav-link'>
+                                        Blog
+                                    </Link>
+                                </DrawerClose>
+                            </div>
+                            <DrawerFooter>
+
+                            </DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+
                     <Link href="/" className='me-10' >
                         <Logo size={28} />
                     </Link>
-                    <NavigationMenu>
+                    <NavigationMenu className='hidden lg:flex'>
                         <NavigationMenuList>
                             <NavigationMenuItem>
                                 <Link href="/about-us" legacyBehavior passHref>

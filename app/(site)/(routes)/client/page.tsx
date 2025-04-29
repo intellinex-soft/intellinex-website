@@ -1,3 +1,4 @@
+import ClientComponent from '@/components/page/client-component'
 import { Metadata } from 'next'
 import React from 'react'
 
@@ -7,7 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function ClientPage() {
-    return (
-        <div>ClientPage</div>
-    )
+    return <ClientComponent />
 }
