@@ -42,7 +42,7 @@ export async function generateStaticParams() {
         .from('fa_products')
         .select('id')
         .eq('status', true)
-    return products?.map((product) => ({
+    return products!.map((product) => ({
         id: product.id
     }))
 }

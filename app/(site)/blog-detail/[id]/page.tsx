@@ -43,7 +43,7 @@ export async function generateStaticParams() {
         .select('*')
         .eq("status", true);
 
-    return blogs?.map((blog) => ({
+    return blogs!.map((blog) => ({
         id: blog.id
     }))
 }
