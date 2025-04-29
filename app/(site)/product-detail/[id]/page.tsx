@@ -38,7 +38,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
     const supabase = createAdminClient();
-    const { data: products } = await supabase
+    const { data: products = [] } = await supabase
         .from('fa_products')
         .select('id')
         .eq('status', true)
