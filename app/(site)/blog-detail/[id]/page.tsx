@@ -35,7 +35,7 @@ export async function generateMetadata({
     };
 }
 
-export async function generateStaticParans() {
+export async function generateStaticParams() {
     const supabase = await createClient();
     const { data: blogs } = await supabase
         .from('fa_blogs')
