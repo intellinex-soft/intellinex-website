@@ -1,18 +1,9 @@
 import ProductDetailComponent from '@/components/page/product-detail-component';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { createClient } from '@/utils/supabase/server';
 import { Metadata } from 'next';
 import React from 'react'
 
-export async function generateStaticParans() {
-    const supabase = await createClient();
-    const { data: products } = await supabase
-        .from('fa_products')
-        .select('id')
-        .eq('status', true)
-        .order('created_at', { ascending: false })
-    const allIds = products && products?.map((product) => product?.id)
-    return allIds?.map((id) => ({ id }))
-}
 
 export async function generateMetadata({
     params
@@ -45,6 +36,16 @@ export async function generateMetadata({
     };
 }
 
+export async function generateStaticParams() {
+    const supabase = createAdminClient();
+    const { data: products } = await supabase
+        .from('fa_products')
+        .select('id')
+        .eq('status', true)
+    return products?.map((product) => ({
+        id: product.id
+    }))
+}
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params

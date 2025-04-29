@@ -1,4 +1,5 @@
 import BlogDetailComponent from '@/components/page/blog-detail-component';
+import { createAdminClient } from '@/utils/supabase/admin';
 import { createClient } from '@/utils/supabase/server';
 import { Metadata } from 'next'
 import React from 'react'
@@ -36,16 +37,18 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     const { data: blogs } = await supabase
         .from('fa_blogs')
-        .select('id')
+        .select('*')
         .eq("status", true);
-    const allIds = blogs && blogs?.map((blog) => blog?.id)
-    return allIds?.map((id) => ({ id }))
+
+    return blogs?.map((blog) => ({
+        id: blog.id
+    }))
 }
 
-export default async function Payge({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params
     const supabase = await createClient();
     const { data: blog } = await supabase
